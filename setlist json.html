@@ -31,7 +31,7 @@
                 },
                 {
                     artist: "Queen",
-                    title: "I'm In Love With My car",
+                    title: "I'm In Love With My Car",
                     genre: "Glam Rock",
                     year: 1975
                 },
@@ -103,7 +103,8 @@
         </script>
     </div>
     <p style="margin-bottom: 3px">Filter by genre:<br></p>
-    <select name="Genre" id="genrefilt" onchange="displayGenre()">
+    <!-- <select name="Genre" id="genrefilt" onchange="displayGenre()"> show on change -->
+    <select name="Genre" id="genrefilt">
         <option value="Alternative Rock">Alternative Rock</option>
         <option value="Electropop">Electropop</option>
         <option value="Eurobeat">Eurobeat</option>
@@ -113,6 +114,7 @@
         <option value="Pop Rock">Pop Rock</option>
         <option value="Rock">Rock</option>
     </select>
+    <button type="button" onclick="displayGenre()">Filter</button>
 
     <div id="filtered">
         <p id="filteredText">&nbsp;</p>
@@ -121,14 +123,11 @@
     <script language="javascript">
         function displayGenre() {
             var targetGenre = document.getElementById("genrefilt").value;
-            var displayText = "Displaying all " + targetGenre + " songs:<br><br>";
+            var displayText = "Displaying all " + targetGenre + " songs:<br>";
             for (i = 0; i < listlen; i++) {
                 if (setlist.songs[i].genre == targetGenre) {
                     var title = setlist.songs[i].title.bold();
                     displayText += title + "<br>";
-                    displayText += "Artist: " + setlist.songs[i].artist + "<br>";
-                    displayText += "Genre: " + setlist.songs[i].genre + "<br>";
-                    displayText += "Year: " + setlist.songs[i].year + "<br><br>";
                 }
             }
             document.getElementById("filteredText").innerHTML = displayText;
