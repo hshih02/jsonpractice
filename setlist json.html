@@ -1,0 +1,140 @@
+<!doctype <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>SONGS TO PLAY AT THE GAS STATION SETLIST</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        output {
+            display: flex;
+        }
+    </style>
+
+    <script language="javascript">
+        var setlist = {
+            songs: [
+                {
+                    artist: "Metallica",
+                    title: "Fuel",
+                    genre: "Heavy Metal",
+                    year: 1996
+                },
+                {
+                    artist: "Dave Rodgers",
+                    title: "Déjà Vu",
+                    genre: "Eurobeat",
+                    year: 1999
+                },
+                {
+                    artist: "Queen",
+                    title: "I'm In Love With My car",
+                    genre: "Glam Rock",
+                    year: 1975
+                },
+                {
+                    artist: "Audioslave",
+                    title: "Gasoline",
+                    genre: "Alternative Rock",
+                    year: 2002
+                },
+                {
+                    artist: "Queen",
+                    title: "Bicycle Race",
+                    genre: "Rock",
+                    year: 1978
+                },
+                {
+                    artist: "Red Hot Chili Peppers",
+                    title: "By the Way",
+                    genre: "Funk Rock",
+                    year: 2002
+                },
+                {
+                    artist: "Queen",
+                    title: "Another One Bites The Dust",
+                    genre: "Funk Rock",
+                    year: 1980
+                },
+                {
+                    artist: "Queen and David Bowie",
+                    title: "Under Pressure",
+                    genre: "Pop Rock",
+                    year: 1981
+                },
+                {
+                    artist: "Ellie Goulding",
+                    title: "Burn",
+                    genre: "Electropop",
+                    year: 2013
+                },
+                {
+                    artist: "Queen",
+                    title: "Don't Stop Me Now",
+                    genre: "Pop Rock",
+                    year: 1979
+                }
+            ]
+        }
+    </script>
+</head>
+
+<body>
+    <h1 style="margin-bottom: 2px">SONGS TO PLAY AT THE GAS STATION</h1>
+    <h1 style="font-size: 10pt; margin-top: 2px; margin-bottom: 20px">In glorious multilanguage interfaceable JSON format</h1>
+    <div class="output">
+        <script language="javascript">
+            var setlistJSON = JSON.stringify(setlist);
+            document.write("Serialized JSON: <br><br>");
+            document.write(setlistJSON + "<br><br>");
+            document.write("Formatted: <br><br>");
+            var listlen = (setlist.songs).length;
+
+            for (i = 0; i < listlen; i++) {
+                var title = setlist.songs[i].title.bold();
+                document.write(title + "<br>");
+                document.write("Artist: " + setlist.songs[i].artist + "<br>");
+                document.write("Genre: " + setlist.songs[i].genre + "<br>");
+                document.write("Year: " + setlist.songs[i].year + "<br><br>");
+            }
+        </script>
+    </div>
+    <p style="margin-bottom: 3px">Filter by genre:<br></p>
+    <select name="Genre" id="genrefilt" onchange="displayGenre()">
+        <option value="Alternative Rock">Alternative Rock</option>
+        <option value="Electropop">Electropop</option>
+        <option value="Eurobeat">Eurobeat</option>
+        <option value="Funk Rock">Funk Rock</option>
+        <option value="Glam Rock">Glam Rock</option>
+        <option value="Heavy Metal">Heavy Metal</option>
+        <option value="Pop Rock">Pop Rock</option>
+        <option value="Rock">Rock</option>
+    </select>
+
+    <div id="filtered">
+        <p id="filteredText">&nbsp;</p>
+    </div>
+
+    <script language="javascript">
+        function displayGenre() {
+            var targetGenre = document.getElementById("genrefilt").value;
+            var displayText = "Displaying all " + targetGenre + " songs:<br><br>";
+            for (i = 0; i < listlen; i++) {
+                if (setlist.songs[i].genre == targetGenre) {
+                    var title = setlist.songs[i].title.bold();
+                    displayText += title + "<br>";
+                    displayText += "Artist: " + setlist.songs[i].artist + "<br>";
+                    displayText += "Genre: " + setlist.songs[i].genre + "<br>";
+                    displayText += "Year: " + setlist.songs[i].year + "<br><br>";
+                }
+            }
+            document.getElementById("filteredText").innerHTML = displayText;
+        }
+    </script>
+
+</body>
+
+</html>
